@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>News</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid paddding mb-5 small-middle-container">
+    <div class="row mx-0">
+        <div class="col-md-6 col-12 " data-animate-effect="fadeIn" id="home">
+            
+        </div>
+        <div class="col-md-6 ">
+            <div class="row">
+                <div class="col-md-12 col-12" data-animate-effect="fadeIn" id="second">
+                    
+                    
+                </div>
+            </div>
+                <div class="border-top"></div>
+                <div class="row pb-3 small-blocks " id="third">         
+                </div>
+                <div class="border-top"></div>
+                <div class="row pb-3 small-blocks " id="fourth">
+                                  
+                </div>
+                <div class="border-top"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function ajaxCall() {
+        $.ajax({
+            url: "/data/api.json",
+            type: 'GET',
+            dataType: 'json',
+            CORS: false ,
+            contentType:'application/json',
+            headers: {
+            'Access-Control-Allow-Origin': '*',
+            },
+            beforeSend: function (xhr) {
+            console.log("done...");
+            },
+            success: function (data){
+            $('#home').html(`<div class="fh5co_suceefh5co_height"><img src="${data.home.image}" alt="img"/>
+            </div>
+            <div>
+                <h3 class="head-font"><img src="/images/pluse.PNG" alt="img"/>${data.home.head}</h2>
+                <p class="pargraph-margin"><b>EXCLUSIVE </b>${data.home.desc}</p>
+            </div>
+            <div class="most_fh5co_treding_font_123"> <img src="/images/time.png" height="10px" width="10px">2m <img src="/images/message.png"  height="10px" width="10px">1</div>
+            <div class="border-top"></div>
+            `);
+            $("#second").html(`<div class="fh5co_suceefh5co_height_2"><img src="${data.one.image}" alt="img"/>
+                    </div>
+                    <div >
+                        <h2 class="head-font"><img src="/images/pluse.PNG" alt="img"/>${data.one.head}</h2>
+                        <p><b>EXCLUSIVE </b>${data.one.desc}</p>
+                    </div>
+                    <div class="most_fh5co_treding_font_123"> <img src="/images/time.png" height="10px" width="10px">2m <img src="/images/message.png"  height="10px" width="10px">1</div>
+                    `)
+            $("#third").html(`<div class="col-7 paddding">
+                        <div class="most_fh5co_treding_font"><img src="/images/pluse.PNG" height="20px" width="20px alt="img"/> ${data.two.head}</div>
+                        <div class="most_fh5co_treding_font_123"> <img src="/images/time.png" height="10px" width="10px">2m <img src="/images/message.png"  height="10px" width="10px">1</div>
+                    </div>
+                    <div class="col-5 align-self-center">
+                        <img src="${data.two.image}" alt="img" class="fh5co_most_trading"/>
+                    </div>    `)
+            $("#fourth").html(`<div class="col-7 paddding">
+                <div class="most_fh5co_treding_font"><img src="/images/pluse.PNG" height="20px" width="20px alt="img"/> ${data.three.head}</div>
+                <div class="most_fh5co_treding_font_123"> <img src="/images/time.png" height="10px" width="10px">2m <img src="/images/message.png" height="10px" width="10px">1</div>
+            </div>
+            <div class="col-5 align-self-center">
+                <img src="${data.three.image}" alt="img" class="fh5co_most_trading"/>
+            </div>    `)
+            },
+            error:function(err){
+                console.log("err",err)
+            }
+            }) 
+    }
+    ajaxCall();
+</script>
+</body>
+</html>
